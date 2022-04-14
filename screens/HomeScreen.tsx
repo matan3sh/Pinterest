@@ -12,9 +12,21 @@ export default function HomeScreen({
   return (
     <ScrollView>
       <View style={styles.container}>
-        {pins.map((pin) => (
-          <Pin title={pin.title} image={pin.image} key={pin.id} />
-        ))}
+        <View style={styles.column}>
+          {pins
+            .filter((_, index) => index % 2 === 0)
+            .map((pin) => (
+              <Pin title={pin.title} image={pin.image} key={pin.id} />
+            ))}
+        </View>
+
+        <View style={styles.column}>
+          {pins
+            .filter((_, index) => index % 2 === 1)
+            .map((pin) => (
+              <Pin title={pin.title} image={pin.image} key={pin.id} />
+            ))}
+        </View>
       </View>
     </ScrollView>
   );
@@ -22,9 +34,10 @@ export default function HomeScreen({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
     padding: 10,
+    flexDirection: "row",
+  },
+  column: {
+    flex: 1,
   },
 });
