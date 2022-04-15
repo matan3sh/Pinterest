@@ -1,6 +1,6 @@
 import { View, Image, Text, StyleSheet, Pressable } from "react-native";
-import { useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
+import { useAspectRatio } from "../hooks/useAspectRatio";
 
 interface IProps {
   image: string;
@@ -8,13 +8,7 @@ interface IProps {
 }
 
 export function Pin({ title, image }: IProps) {
-  const [ratio, setRatio] = useState<number>(1);
-
-  useEffect(() => {
-    if (image) {
-      Image.getSize(image, (width, height) => setRatio(width / height));
-    }
-  }, [image]);
+  const { ratio } = useAspectRatio(image, Image);
 
   const onLike = () => {
     console.log("Like");
