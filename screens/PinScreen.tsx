@@ -4,7 +4,7 @@ import {
   SafeAreaView,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -18,9 +18,15 @@ interface Pin {
   id: string;
 }
 
+type PinParams = {
+  PinDetail: {
+    id: string;
+  };
+};
+
 export default function PinScreen() {
   const navigation = useNavigation();
-  const route = useRoute();
+  const route = useRoute<RouteProp<PinParams, "PinDetail">>();
 
   const [pin, setPin] = useState<Pin | null>(null);
 
