@@ -20,6 +20,7 @@ import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import TabOneScreen from "../screens/HomeScreen";
 import TabTwoScreen from "../screens/ProfileScreen";
+import PinScreen from "../screens/PinScreen";
 import {
   RootStackParamList,
   RootTabParamList,
@@ -55,6 +56,13 @@ function RootNavigator() {
         component={BottomTabNavigator}
         options={{ headerShown: false }}
       />
+
+      <Stack.Screen
+        name="Pin"
+        component={PinScreen}
+        options={{ headerShown: false }}
+      />
+
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}

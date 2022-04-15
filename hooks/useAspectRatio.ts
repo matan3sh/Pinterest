@@ -12,5 +12,5 @@ export function useAspectRatio(image: string, ImageComponent: typeof Image) {
     }
   }, [image]);
 
-  return { ratio };
+  return ratio;
 }

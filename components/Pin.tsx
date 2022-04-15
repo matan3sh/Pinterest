@@ -1,21 +1,35 @@
-import { View, Image, Text, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { useAspectRatio } from "../hooks/useAspectRatio";
 
 interface IProps {
   image: string;
   title: string;
+  pinId: string;
 }
 
-export function Pin({ title, image }: IProps) {
-  const { ratio } = useAspectRatio(image, Image);
+export function Pin({ title, image, pinId }: IProps) {
+  const navigation = useNavigation();
+  const ratio = useAspectRatio(image, Image);
 
   const onLike = () => {
     console.log("Like");
   };
 
+  const goToPin = () => {
+    navigation.navigate("Pin", { id: pinId });
+  };
+
   return (
-    <View style={styles.pin}>
+    <TouchableOpacity onPress={goToPin} style={styles.pin}>
       <View>
         <Image
           source={{ uri: image }}
@@ -29,7 +43,7 @@ export function Pin({ title, image }: IProps) {
       <Text style={styles.title} numberOfLines={2}>
         {title}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
