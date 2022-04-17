@@ -12,7 +12,7 @@ import { useAspectRatio } from "../hooks/useAspectRatio";
 
 import pins from "../assets/data/pins";
 
-interface Pin {
+export interface Pin {
   title: string;
   image: string;
   id: string;
